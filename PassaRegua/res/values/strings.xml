@@ -4,15 +4,27 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_passa_regua">PassaRegua</string>
+
     <color name="myBlue">#336699</color>
+
     <string name="header">TopImage</string>
     <string name="total">Total</string>
-    <color name="white">#FFF</color>
+
+    <color name="white">#FFFFFF</color>
+
     <string name="subtotal">Subtotal</string>
     <string name="calcular">Calcular</string>
     <string name="soma">Soma</string>
     <string name="tenpercent">10%</string>
     <string name="acrescentaitem">Acrescenta Item</string>
     <string name="suaparte">Sua Parte</string>
+    <string name="resta">Resta</string>
+    <string name="valor">Valor</string>
+    <string name="quantidade">Qtd</string>
+    <string name="historico">Histórico</string>
+    <string name="voltar">Voltar</string>
+    <string name="title_activity_lista_itens">ListaItens</string>
+    <string name="background">Background</string>
+    <string name="subtrai">Subtrai</string>
 
 </resources>
