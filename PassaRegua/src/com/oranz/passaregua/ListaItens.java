@@ -1,4 +1,4 @@
-package com.mobile.passaregua;
+package com.oranz.passaregua;
 
 import android.os.Bundle;
 import android.view.View;
