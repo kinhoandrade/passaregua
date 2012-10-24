@@ -3,11 +3,11 @@ package com.oranz.passaregua;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,9 +18,9 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 public class PassaRegua extends Activity {
-	  private EditText total;
+	  private static EditText total;
 	  private EditText subtotal;
-	  private EditText suaparte;
+	  private static EditText suaparte;
 	  private EditText acrescenta;
 	  private TextView restaText;
 	  private TextView suaparteText;
@@ -31,7 +31,7 @@ public class PassaRegua extends Activity {
 	  private Button historico;
 	  private Spinner spinner;
 	  
-	  private List<String> itens;
+	  private static List<String> itens;
 
       float newSubTotal;
       float newAcrescenta;
@@ -77,19 +77,30 @@ public class PassaRegua extends Activity {
         array_spinner[7]="8";
         array_spinner[8]="9";
         array_spinner[9]="10";
-        spinner = (Spinner) findViewById(R.id.spinner1);
-        @SuppressWarnings({ "rawtypes", "unchecked" })
-		ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, array_spinner);
-        spinner.setAdapter(adapter);
+        spinner = (Spinner) findViewById(R.id.spinner1);            
+		ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, array_spinner);
+		adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter2);
         spinner.setSelection(0);
+    
         
     	Toast.makeText(this, "Informe o valor Total da Conta e acrescente cada item consumido com sua quantidade", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_passa_regua, menu);
-        return true;
+        boolean result = super.onCreateOptionsMenu(menu);
+        menu.add(0, 1, Menu.NONE, R.string.info );
+        return result;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch ( item.getItemId() ) {
+          case 1:   	
+              Toast.makeText(this, "Passa Regua v2.0\nDesenvolvido por Oranz", Toast.LENGTH_LONG).show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void addValue(View view) {
@@ -238,4 +249,16 @@ public class PassaRegua extends Activity {
 	        break;
         }
     }
+
+	public static String getTotal() {
+		return total.getText().toString();
+	}
+	
+	public static String getSuaparte() {
+		return suaparte.getText().toString();
+	}
+
+	public static List<String> getItens() {
+		return itens;
+	}    
 }

@@ -26,5 +26,9 @@
     <string name="title_activity_lista_itens">ListaItens</string>
     <string name="background">Background</string>
     <string name="subtrai">Subtrai</string>
+    <string name="vazio">Vazio</string>
+    <color name="black">#000000</color>
+    <string name="teste">teste</string>
+    <string name="info">Info</string>
 
 </resources>

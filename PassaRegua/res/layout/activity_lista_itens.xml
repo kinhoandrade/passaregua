@@ -23,17 +23,6 @@
         android:text="@string/voltar" />
 
     <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/imageView1"
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="53dp"
-        android:text="@string/historico"
-        android:textColor="@color/white" />
-
-    <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,4 +32,35 @@
         android:text="@string/historico"
         android:textColor="@color/white" />
 
+  	<ListView android:id="@+id/android:list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button10"
+        android:layout_below="@+id/textView1"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/white"
+        android:layout_marginTop="15dp" />
+
+  	<TextView android:id="@+id/android:empty"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/textView1"
+        android:text="@string/vazio"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp" />
+
+  	<TextView
+  	    android:id="@+id/totalTextView2"
+  	    android:layout_width="wrap_content"
+  	    android:layout_height="wrap_content"
+  	    android:layout_alignLeft="@+id/android:empty"
+  	    android:layout_alignTop="@+id/button10"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="5dp"
+  	    android:text="@string/total" />
+    
 </RelativeLayout>
