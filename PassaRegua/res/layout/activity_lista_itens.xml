@@ -2,17 +2,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/myBlue" >
+    android:background="@drawable/vintage_notebook" >
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="320dp"
-        android:layout_height="80dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="false"
-        android:layout_alignParentTop="true"
-        android:contentDescription="@string/header"
-        android:src="@drawable/topruler" />
+    <TextView
+        android:id="@+id/passareguaLogo2"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content"
+	    android:gravity="center"
+		android:paddingLeft="10dp"
+		android:paddingRight="10dp"
+		android:paddingTop="0dp" 
+		android:textSize="40dp"
+		android:text="@string/passaregua" />
 
     <Button
         android:id="@+id/button10"
@@ -26,11 +27,12 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView1"
+        android:layout_below="@+id/passareguaLogo2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
+        android:textSize="30dp"
         android:text="@string/historico"
-        android:textColor="@color/white" />
+        android:textColor="@color/black" />
 
   	<ListView android:id="@+id/android:list"
         android:layout_width="match_parent"
@@ -58,9 +60,11 @@
   	    android:layout_width="wrap_content"
   	    android:layout_height="wrap_content"
   	    android:layout_alignLeft="@+id/android:empty"
-  	    android:layout_alignTop="@+id/button10"
+        android:layout_below="@+id/android:list"
         android:layout_marginLeft="15dp"
         android:layout_marginBottom="5dp"
+        android:textColor="@color/red"
+        android:textSize="15dp"
   	    android:text="@string/total" />
     
 </RelativeLayout>

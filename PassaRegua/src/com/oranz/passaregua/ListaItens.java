@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import android.app.ListActivity;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +15,11 @@ import android.widget.TextView;
 public class ListaItens extends ListActivity {
 	  ArrayList<HashMap<String,String>> list = new ArrayList<HashMap<String,String>>();
 	  private SimpleAdapter notes;
-	  private TextView total;
+	  
+	  private TextView passareguaLogo;
+	  private TextView totalTextView;
+	  private TextView historicoTextView;
+	  
 	  private Button btnClose;
 
 
@@ -22,7 +27,16 @@ public class ListaItens extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_itens);
         btnClose = (Button) findViewById(R.id.button10);
-        total = (TextView) findViewById(R.id.totalTextView2);
+        totalTextView = (TextView) findViewById(R.id.totalTextView2);
+        historicoTextView = (TextView) findViewById(R.id.textView1);
+        passareguaLogo = (TextView) findViewById(R.id.passareguaLogo2);
+        
+        Typeface fontRockwell = Typeface.createFromAsset(this.getAssets(), "fonts/sketchRockwell-bold.ttf");
+        Typeface carefree = Typeface.createFromAsset(this.getAssets(), "fonts/carefree.ttf");
+        
+        passareguaLogo.setTypeface(fontRockwell);
+        historicoTextView.setTypeface(carefree);
+        totalTextView.setTypeface(carefree);
  
         List<String> operacoes = PassaRegua.getItens();
  
@@ -40,7 +54,7 @@ public class ListaItens extends ListActivity {
             addItem(operacao[1],operacao[0]);			
 		}
         
-        total.setText("Total: " + PassaRegua.getTotal() + "\nSua Parte: " + PassaRegua.getSuaparte());
+        totalTextView.setText("Total: " + PassaRegua.getTotal() + "\nSua Parte: " + PassaRegua.getSuaparte());
  
         btnClose.setOnClickListener(new View.OnClickListener() {public void onClick(View arg0) {finish();}});
 	}

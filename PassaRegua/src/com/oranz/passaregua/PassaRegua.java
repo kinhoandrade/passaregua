@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,14 +20,23 @@ import android.widget.ToggleButton;
 
 public class PassaRegua extends Activity {
 	  private static EditText total;
-	  private EditText subtotal;
 	  private static EditText suaparte;
+	  private EditText subtotal;
 	  private EditText acrescenta;
+	  private EditText restaEdit;
+	  private EditText suaparteEdit;
+	 
+	  private TextView passareguaLogo;
 	  private TextView restaText;
 	  private TextView suaparteText;
 	  private TextView tenpercentText;
-	  private EditText restaEdit;
-	  private EditText suaparteEdit;
+	  private TextView totalText;
+	  private TextView acrescentaitemText;
+	  private TextView valorText;
+	  private TextView qtdText;
+	  private TextView xTotalText;
+	  private TextView xValorText;
+	  
 	  private ToggleButton tenpercentButton;
 	  private Button historico;
 	  private Spinner spinner;
@@ -47,17 +57,44 @@ public class PassaRegua extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_passa_regua);
+        
         total = (EditText) findViewById(R.id.editText1);
         subtotal = (EditText) findViewById(R.id.editText3);
         suaparte = (EditText) findViewById(R.id.EditText02);
         acrescenta = (EditText) findViewById(R.id.editText2);
-        restaText = (TextView) findViewById(R.id.textView4);
         restaEdit = (EditText) findViewById(R.id.editText3);
+        suaparteEdit = (EditText) findViewById(R.id.EditText02);
+        
+
+        passareguaLogo = (TextView) findViewById(R.id.passareguaLogo);
+        restaText = (TextView) findViewById(R.id.textView4);
         suaparteText = (TextView) findViewById(R.id.textView2);
         tenpercentText = (TextView) findViewById(R.id.textView5);
-        suaparteEdit = (EditText) findViewById(R.id.EditText02);
+        totalText = (TextView) findViewById(R.id.textView1);
+        acrescentaitemText = (TextView) findViewById(R.id.textView6);
+        valorText = (TextView) findViewById(R.id.textView3);
+        qtdText = (TextView) findViewById(R.id.textView7);
+        xTotalText = (TextView) findViewById(R.id.xTotalTextView);
+        xValorText = (TextView) findViewById(R.id.xValorTextView);
+        
+        
         tenpercentButton = (ToggleButton) findViewById(R.id.toggleButton1);
+        
         historico = (Button) findViewById(R.id.button2);
+        
+        Typeface fontRockwell = Typeface.createFromAsset(this.getAssets(), "fonts/sketchRockwell-bold.ttf");
+        Typeface carefree = Typeface.createFromAsset(this.getAssets(), "fonts/carefree.ttf");
+        
+        passareguaLogo.setTypeface(fontRockwell);
+        restaText.setTypeface(carefree);
+        suaparteText.setTypeface(carefree);
+        tenpercentText.setTypeface(carefree);
+        totalText.setTypeface(carefree);
+        acrescentaitemText.setTypeface(carefree);
+        valorText.setTypeface(carefree);
+        qtdText.setTypeface(carefree);
+        xTotalText.setTypeface(carefree);
+        xValorText.setTypeface(carefree);
         
         itens = new ArrayList<String>();
         
@@ -128,6 +165,7 @@ public class PassaRegua extends Activity {
     	  	suaparteEdit.setVisibility(0);
     	  	tenpercentButton.setVisibility(0);
     	  	historico.setVisibility(0);
+    	  	xTotalText.setVisibility(1);
     	  	
     	  	operacao = ("Soma: " + acrescenta.getText().toString()) + " x " + Integer.parseInt(spinner.getSelectedItem().toString());
 	        tempSuaParte = newSuaParte + (Float.parseFloat(acrescenta.getText().toString()) * Integer.parseInt(spinner.getSelectedItem().toString()));

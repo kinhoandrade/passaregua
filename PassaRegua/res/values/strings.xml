@@ -12,6 +12,7 @@
 
     <color name="white">#FFFFFF</color>
 
+    <string name="x">X</string>
     <string name="subtotal">Subtotal</string>
     <string name="calcular">Calcular</string>
     <string name="soma">Soma</string>
@@ -20,7 +21,7 @@
     <string name="suaparte">Sua Parte</string>
     <string name="resta">Resta</string>
     <string name="valor">Valor</string>
-    <string name="quantidade">Qtd</string>
+    <string name="quantidade">Quantidade</string>
     <string name="historico">Histórico</string>
     <string name="voltar">Voltar</string>
     <string name="title_activity_lista_itens">ListaItens</string>
@@ -30,5 +31,7 @@
     <color name="black">#000000</color>
     <string name="teste">teste</string>
     <string name="info">Info</string>
+    <string name="passaregua">PassaRegua</string>
+    <color name="red">#FF0000</color>
 
 </resources>
