@@ -31,15 +31,16 @@ public class PassaRegua extends Activity {
 	  private TextView suaparteText;
 	  private TextView tenpercentText;
 	  private TextView totalText;
-	  private TextView acrescentaitemText;
 	  private TextView valorText;
 	  private TextView qtdText;
 	  private TextView xTotalText;
 	  private TextView xValorText;
+	  private TextView dividirText;
 	  
 	  private ToggleButton tenpercentButton;
 	  private Button historico;
-	  private Spinner spinner;
+	  private Spinner quantidadeSpinner;
+	  private Spinner dividirSpinner;
 	  
 	  private static List<String> itens;
 
@@ -58,29 +59,31 @@ public class PassaRegua extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_passa_regua);
         
-        total = (EditText) findViewById(R.id.editText1);
-        subtotal = (EditText) findViewById(R.id.editText3);
-        suaparte = (EditText) findViewById(R.id.EditText02);
-        acrescenta = (EditText) findViewById(R.id.editText2);
-        restaEdit = (EditText) findViewById(R.id.editText3);
-        suaparteEdit = (EditText) findViewById(R.id.EditText02);
+        total = (EditText) findViewById(R.id.totalET);
+        subtotal = (EditText) findViewById(R.id.subtotalET);
+        suaparte = (EditText) findViewById(R.id.suaparteET);// DUPLICADO!!!!!!!!!1
+        acrescenta = (EditText) findViewById(R.id.acrescentaitemET);
+        restaEdit = (EditText) findViewById(R.id.subtotalET);// ISSO TA CERTO?
+        suaparteEdit = (EditText) findViewById(R.id.suaparteET);
         
 
         passareguaLogo = (TextView) findViewById(R.id.passareguaLogo);
-        restaText = (TextView) findViewById(R.id.textView4);
-        suaparteText = (TextView) findViewById(R.id.textView2);
-        tenpercentText = (TextView) findViewById(R.id.textView5);
-        totalText = (TextView) findViewById(R.id.textView1);
-        acrescentaitemText = (TextView) findViewById(R.id.textView6);
-        valorText = (TextView) findViewById(R.id.textView3);
-        qtdText = (TextView) findViewById(R.id.textView7);
+        restaText = (TextView) findViewById(R.id.restaTV);
+        suaparteText = (TextView) findViewById(R.id.suaparteTV);
+        tenpercentText = (TextView) findViewById(R.id.tenpercentTV);
+        totalText = (TextView) findViewById(R.id.totalTV);
+        valorText = (TextView) findViewById(R.id.valorTV);
+        qtdText = (TextView) findViewById(R.id.quantidadeTV);
         xTotalText = (TextView) findViewById(R.id.xTotalTextView);
         xValorText = (TextView) findViewById(R.id.xValorTextView);
+        dividirText = (TextView) findViewById(R.id.dividirTV);
         
+        quantidadeSpinner = (Spinner) findViewById(R.id.qtdSP);  
+        dividirSpinner = (Spinner) findViewById(R.id.dividirSP);        
         
-        tenpercentButton = (ToggleButton) findViewById(R.id.toggleButton1);
+        tenpercentButton = (ToggleButton) findViewById(R.id.tenpercetTB);
         
-        historico = (Button) findViewById(R.id.button2);
+        historico = (Button) findViewById(R.id.historicoBT);
         
         Typeface fontRockwell = Typeface.createFromAsset(this.getAssets(), "fonts/sketchRockwell-bold.ttf");
         Typeface carefree = Typeface.createFromAsset(this.getAssets(), "fonts/carefree.ttf");
@@ -90,11 +93,11 @@ public class PassaRegua extends Activity {
         suaparteText.setTypeface(carefree);
         tenpercentText.setTypeface(carefree);
         totalText.setTypeface(carefree);
-        acrescentaitemText.setTypeface(carefree);
         valorText.setTypeface(carefree);
         qtdText.setTypeface(carefree);
         xTotalText.setTypeface(carefree);
         xValorText.setTypeface(carefree);
+        dividirText.setTypeface(carefree);
         
         itens = new ArrayList<String>();
         
@@ -113,13 +116,15 @@ public class PassaRegua extends Activity {
         array_spinner[6]="7";
         array_spinner[7]="8";
         array_spinner[8]="9";
-        array_spinner[9]="10";
-        spinner = (Spinner) findViewById(R.id.spinner1);            
+        array_spinner[9]="10";          
 		ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, array_spinner);
 		adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter2);
-        spinner.setSelection(0);
+		
+        quantidadeSpinner.setAdapter(adapter2);
+        quantidadeSpinner.setSelection(0);
     
+        dividirSpinner.setAdapter(adapter2);
+        dividirSpinner.setSelection(0);
         
     	Toast.makeText(this, "Informe o valor Total da Conta e acrescente cada item consumido com sua quantidade", Toast.LENGTH_LONG).show();
     }
@@ -135,17 +140,17 @@ public class PassaRegua extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch ( item.getItemId() ) {
           case 1:   	
-              Toast.makeText(this, "Passa Regua v2.0\nDesenvolvido por Oranz", Toast.LENGTH_LONG).show();
+              Toast.makeText(this, "Passa Regua v2.1\nDesenvolvido por Oranz", Toast.LENGTH_LONG).show();
         }
         return super.onOptionsItemSelected(item);
     }
 
     public void addValue(View view) {
         switch (view.getId()) {
-        case R.id.button1:
+        case R.id.somaBT:
         	float tempSuaParte = 0;
         	float tempSubTotal = 0;
-            ToggleButton tenPercentButton = (ToggleButton) findViewById(R.id.toggleButton1);
+            ToggleButton tenPercentButton = (ToggleButton) findViewById(R.id.tenpercetTB);
             String operacao = "";
                     	
             if (total.getText().length() == 0) {
@@ -167,10 +172,17 @@ public class PassaRegua extends Activity {
     	  	historico.setVisibility(0);
     	  	xTotalText.setVisibility(1);
     	  	
-    	  	operacao = ("Soma: " + acrescenta.getText().toString()) + " x " + Integer.parseInt(spinner.getSelectedItem().toString());
-	        tempSuaParte = newSuaParte + (Float.parseFloat(acrescenta.getText().toString()) * Integer.parseInt(spinner.getSelectedItem().toString()));
-	        tempSubTotal = Float.parseFloat(total.getText().toString()) - tempSuaParte; 
-	        spinner.setSelection(0);	        
+    	  	if(dividirSpinner.getSelectedItem().toString().equalsIgnoreCase("1")){
+	    	  	operacao = ("Soma: " + acrescenta.getText().toString()) + " x " + Integer.parseInt(quantidadeSpinner.getSelectedItem().toString());
+		        tempSuaParte = newSuaParte + (Float.parseFloat(acrescenta.getText().toString()) * Integer.parseInt(quantidadeSpinner.getSelectedItem().toString()));
+		        tempSubTotal = Float.parseFloat(total.getText().toString()) - tempSuaParte; 
+    	  	}else{
+	    	  	operacao = ("Soma: " + acrescenta.getText().toString() + " x " + Integer.parseInt(quantidadeSpinner.getSelectedItem().toString()) + " / " + dividirSpinner.getSelectedItem().toString());
+		        tempSuaParte = newSuaParte + ((Float.parseFloat(acrescenta.getText().toString()) * Integer.parseInt(quantidadeSpinner.getSelectedItem().toString())) / Integer.parseInt(dividirSpinner.getSelectedItem().toString()));
+		        tempSubTotal = Float.parseFloat(total.getText().toString()) - tempSuaParte; 
+    	  	}
+	        quantidadeSpinner.setSelection(0);	   
+	        dividirSpinner.setSelection(0);
 	        
 	        if(tempSuaParte > Float.parseFloat(total.getText().toString())) {
 	            Toast.makeText(this, "Sua parte ultrapassa o total da conta", Toast.LENGTH_LONG).show();
@@ -198,8 +210,8 @@ public class PassaRegua extends Activity {
     
     public void calculateTenPercent(View view){
     	switch (view.getId()) {
-        case R.id.toggleButton1:
-            ToggleButton tenPercentButton = (ToggleButton) findViewById(R.id.toggleButton1);
+        case R.id.tenpercetTB:
+            ToggleButton tenPercentButton = (ToggleButton) findViewById(R.id.tenpercetTB);
             
             if((newSuaParte * 1.1) > newTotal){
 	            Toast.makeText(this, "10% não pode ser calculado. Sua parte ultrapassará o total.", Toast.LENGTH_LONG).show();  
@@ -243,11 +255,11 @@ public class PassaRegua extends Activity {
     
     public void subtrair(View view){
         switch (view.getId()) {
-        case R.id.button3:
+        case R.id.subtraiBT:
         	float tempSuaParte = 0;
         	float tempSubTotal = 0;
             String operacao = "";
-            ToggleButton tenPercentButton = (ToggleButton) findViewById(R.id.toggleButton1);
+            ToggleButton tenPercentButton = (ToggleButton) findViewById(R.id.tenpercetTB);
 
 	        if (acrescenta.getText().length() == 0 || Float.parseFloat(acrescenta.getText().toString()) <= 0) {
 	            Toast.makeText(this, "Favor Inserir o valor do item a subtrair", Toast.LENGTH_LONG).show();
@@ -259,10 +271,17 @@ public class PassaRegua extends Activity {
 	            return;    		
 	    	}	        
 	
-		  	operacao = ("Subtrai: " + acrescenta.getText().toString()) + " x " + Integer.parseInt(spinner.getSelectedItem().toString());
-	        tempSuaParte = newSuaParte - (Float.parseFloat(acrescenta.getText().toString()) * Integer.parseInt(spinner.getSelectedItem().toString()));
-	        tempSubTotal = Float.parseFloat(total.getText().toString()) - tempSuaParte; 
-	        spinner.setSelection(0);	        
+    	  	if(dividirSpinner.getSelectedItem().toString().equalsIgnoreCase("1")){
+	    	  	operacao = ("Soma: " + acrescenta.getText().toString()) + " x " + Integer.parseInt(quantidadeSpinner.getSelectedItem().toString());
+		        tempSuaParte = newSuaParte + (Float.parseFloat(acrescenta.getText().toString()) * Integer.parseInt(quantidadeSpinner.getSelectedItem().toString()));
+		        tempSubTotal = Float.parseFloat(total.getText().toString()) - tempSuaParte; 
+    	  	}else{
+	    	  	operacao = ("Soma: " + acrescenta.getText().toString() + " x " + Integer.parseInt(quantidadeSpinner.getSelectedItem().toString()) + " / " + dividirSpinner.getSelectedItem().toString());
+		        tempSuaParte = newSuaParte + ((Float.parseFloat(acrescenta.getText().toString()) * Integer.parseInt(quantidadeSpinner.getSelectedItem().toString())) / Integer.parseInt(dividirSpinner.getSelectedItem().toString()));
+		        tempSubTotal = Float.parseFloat(total.getText().toString()) - tempSuaParte; 
+    	  	}
+	        quantidadeSpinner.setSelection(0);	   
+	        dividirSpinner.setSelection(0);        
 	        
 	        if(tempSuaParte < 0) {
 	            Toast.makeText(this, "Sua parte não pode ser inferior a zero", Toast.LENGTH_LONG).show();

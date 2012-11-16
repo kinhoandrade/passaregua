@@ -23,31 +23,33 @@ public final class R {
         public static final int vintage_notebook=0x7f020003;
     }
     public static final class id {
-        public static final int EditText02=0x7f08000b;
-        public static final int button1=0x7f080011;
+        public static final int acrescentaitemET=0x7f080008;
         public static final int button10=0x7f080001;
-        public static final int button2=0x7f080012;
-        public static final int button3=0x7f080013;
-        public static final int editText1=0x7f080005;
-        public static final int editText2=0x7f080008;
-        public static final int editText3=0x7f08000d;
-        public static final int menu_settings=0x7f080018;
-        public static final int passareguaLogo=0x7f080004;
+        public static final int dividirSP=0x7f08000a;
+        public static final int dividirTV=0x7f08000b;
+        public static final int historicoBT=0x7f080015;
+        public static final int menu_settings=0x7f08001a;
+        public static final int passareguaLogo=0x7f080005;
         public static final int passareguaLogo2=0x7f080000;
-        public static final int spinner1=0x7f080009;
-        public static final int text1=0x7f080016;
-        public static final int text2=0x7f080017;
+        public static final int qtdSP=0x7f080009;
+        public static final int quantidadeTV=0x7f08000c;
+        public static final int restaTV=0x7f080011;
+        public static final int somaBT=0x7f08000d;
+        public static final int suaparteET=0x7f080010;
+        public static final int suaparteTV=0x7f08000f;
+        public static final int subtotalET=0x7f080012;
+        public static final int subtraiBT=0x7f08000e;
+        public static final int tenpercentTV=0x7f080014;
+        public static final int tenpercetTB=0x7f080013;
+        public static final int text1=0x7f080018;
+        public static final int text2=0x7f080019;
         public static final int textView1=0x7f080002;
-        public static final int textView2=0x7f08000a;
-        public static final int textView3=0x7f080007;
-        public static final int textView4=0x7f08000c;
-        public static final int textView5=0x7f08000f;
-        public static final int textView6=0x7f080006;
-        public static final int textView7=0x7f080010;
-        public static final int toggleButton1=0x7f08000e;
+        public static final int totalET=0x7f080006;
+        public static final int totalTV=0x7f080004;
         public static final int totalTextView2=0x7f080003;
-        public static final int xTotalTextView=0x7f080014;
-        public static final int xValorTextView=0x7f080015;
+        public static final int valorTV=0x7f080007;
+        public static final int xTotalTextView=0x7f080016;
+        public static final int xValorTextView=0x7f080017;
     }
     public static final class layout {
         public static final int activity_lista_itens=0x7f030000;
@@ -64,6 +66,7 @@ public final class R {
         public static final int app_name=0x7f050000;
         public static final int background=0x7f050013;
         public static final int calcular=0x7f050008;
+        public static final int dividir=0x7f050019;
         public static final int header=0x7f050004;
         public static final int hello_world=0x7f050001;
         public static final int historico=0x7f050010;

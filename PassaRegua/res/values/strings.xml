@@ -33,5 +33,6 @@
     <string name="info">Info</string>
     <string name="passaregua">PassaRegua</string>
     <color name="red">#FF0000</color>
+    <string name="dividir">Dividir</string>
 
 </resources>
