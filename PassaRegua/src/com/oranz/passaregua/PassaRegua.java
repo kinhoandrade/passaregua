@@ -140,7 +140,7 @@ public class PassaRegua extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch ( item.getItemId() ) {
           case 1:   	
-              Toast.makeText(this, "Passa Regua v2.1\nDesenvolvido por Oranz", Toast.LENGTH_LONG).show();
+              Toast.makeText(this, "Passa Regua v2.2\nDesenvolvido por Oranz", Toast.LENGTH_LONG).show();
         }
         return super.onOptionsItemSelected(item);
     }
