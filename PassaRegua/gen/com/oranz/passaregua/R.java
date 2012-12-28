@@ -66,6 +66,7 @@ public final class R {
         public static final int app_name=0x7f050000;
         public static final int background=0x7f050013;
         public static final int calcular=0x7f050008;
+        public static final int dividido=0x7f05001a;
         public static final int dividir=0x7f050019;
         public static final int header=0x7f050004;
         public static final int hello_world=0x7f050001;

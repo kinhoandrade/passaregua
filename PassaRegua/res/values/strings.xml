@@ -8,7 +8,7 @@
     <color name="myBlue">#336699</color>
 
     <string name="header">TopImage</string>
-    <string name="total">Total</string>
+    <string name="total">Total da Conta</string>
 
     <color name="white">#FFFFFF</color>
 
@@ -20,7 +20,7 @@
     <string name="acrescentaitem">Acrescenta Item</string>
     <string name="suaparte">Sua Parte</string>
     <string name="resta">Resta</string>
-    <string name="valor">Valor</string>
+    <string name="valor">Valor do Item</string>
     <string name="quantidade">Quantidade</string>
     <string name="historico">Histórico</string>
     <string name="voltar">Voltar</string>
@@ -34,5 +34,6 @@
     <string name="passaregua">PassaRegua</string>
     <color name="red">#FF0000</color>
     <string name="dividir">Dividir</string>
+    <string name="dividido">Valor Dividido</string>
 
 </resources>

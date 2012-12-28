@@ -68,13 +68,13 @@
 	    	    
 	    <TextView
 	        android:id="@+id/dividirTV"
+	        style="@style/defaultFont"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_alignBottom="@+id/quantidadeTV"
+	        android:layout_alignLeft="@id/dividirSP"
 	        android:layout_toRightOf="@+id/quantidadeTV"
-	        android:text="@string/dividir"
-	        style="@style/defaultFont"	        
-	        android:layout_alignLeft="@id/dividirSP" />
+	        android:text="@string/dividido" />
 
    	    <Button
 	        android:id="@+id/somaBT"
