@@ -24,7 +24,7 @@
 	        android:layout_alignParentLeft="true"
 	        android:layout_below="@id/totalTV"
 	        android:layout_marginLeft="10dp"
-	        android:layout_marginRight="20dp"
+	        android:layout_marginRight="10dp"
 	        android:layout_marginTop="10dp"
 	        android:contentDescription="@string/total"
 	        android:ems="10"
@@ -90,7 +90,7 @@
 	    	    
 	    <Button
 	        android:id="@+id/subtraiBT"
-	        android:layout_width="70dp"
+	        android:layout_width="80dp"
 	        android:layout_height="wrap_content"
 	        android:layout_alignBottom="@id/somaBT"
 	        android:layout_alignTop="@id/somaBT"
@@ -140,7 +140,7 @@
 	        android:layout_alignLeft="@id/restaTV"
 	        android:layout_below="@id/restaTV"
 	        android:layout_marginTop="10dp"
-	        android:layout_marginRight="20dp"
+	        android:layout_marginRight="10dp"
 	        android:contentDescription="@string/subtotal"
 	        android:ems="10"
 	        android:inputType="number"
@@ -165,8 +165,9 @@
 	        android:id="@+id/tenpercetTB"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_alignTop="@+id/suaparteET"
-	        android:layout_toRightOf="@+id/suaparteET"
+	        android:layout_alignTop="@id/suaparteET"
+	        android:layout_toRightOf="@id/suaparteET"
+	        android:layout_alignRight="@id/totalET"
 	        android:onClick="calculateTenPercent"
 	        android:text="@string/tenpercent"
 	        android:visibility="invisible" />
@@ -195,9 +196,9 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="35dp"
 	        android:layout_below="@id/subtotalET"
+	        android:layout_alignRight="@id/tenpercetTB"
 	        android:onClick="verHistorico"
 	        android:text="@string/historico"
-	        android:layout_alignRight="@id/tenpercetTB"
 	        android:visibility="invisible" />
 	
 	    <TextView

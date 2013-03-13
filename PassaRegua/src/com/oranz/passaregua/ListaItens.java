@@ -54,7 +54,7 @@ public class ListaItens extends ListActivity {
             addItem(operacao[1],operacao[0]);			
 		}
         
-        totalTextView.setText("Total: " + PassaRegua.getTotal() + "\nSua Parte: " + PassaRegua.getSuaparte());
+        totalTextView.setText("" + (getResources().getString(R.string.total)) + ": " + PassaRegua.getTotal() + "\n" + (getResources().getString(R.string.suaparte)) + ": " + PassaRegua.getSuaparte());
  
         btnClose.setOnClickListener(new View.OnClickListener() {public void onClick(View arg0) {finish();}});
 	}

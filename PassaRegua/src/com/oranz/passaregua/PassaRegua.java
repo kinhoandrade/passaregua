@@ -125,8 +125,8 @@ public class PassaRegua extends Activity {
     
         dividirSpinner.setAdapter(adapter2);
         dividirSpinner.setSelection(0);
-        
-    	Toast.makeText(this, "Informe o valor Total da Conta e acrescente cada item consumido com sua quantidade", Toast.LENGTH_LONG).show();
+
+        Toast.makeText(this, (getResources().getString(R.string.message_intro)), Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -139,8 +139,8 @@ public class PassaRegua extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch ( item.getItemId() ) {
-          case 1:   	
-              Toast.makeText(this, "Passa Regua v2.2\nDesenvolvido por Oranz", Toast.LENGTH_LONG).show();
+          case 1:
+              Toast.makeText(this, (getResources().getString(R.string.message_info)), Toast.LENGTH_LONG).show();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -154,30 +154,21 @@ public class PassaRegua extends Activity {
             String operacao = "";
                     	
             if (total.getText().length() == 0) {
-                Toast.makeText(this, "Favor Inserir o total", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, (getResources().getString(R.string.message_insert_total)), Toast.LENGTH_LONG).show();
                 return;
               }
             
             if (acrescenta.getText().length() == 0 || Float.parseFloat(acrescenta.getText().toString()) <= 0) {
-                Toast.makeText(this, "Favor Inserir o valor do item a acrescentar", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, (getResources().getString(R.string.message_insert_item)), Toast.LENGTH_LONG).show();
                 return;
               }
-              
-            restaText.setVisibility(0);
-            restaEdit.setVisibility(0);
-      	  	suaparteText.setVisibility(0);
-    	  	tenpercentText.setVisibility(0);
-    	  	suaparteEdit.setVisibility(0);
-    	  	tenpercentButton.setVisibility(0);
-    	  	historico.setVisibility(0);
-    	  	xTotalText.setVisibility(1);
     	  	
     	  	if(dividirSpinner.getSelectedItem().toString().equalsIgnoreCase("1")){
-	    	  	operacao = ("Soma: " + acrescenta.getText().toString()) + " x " + Integer.parseInt(quantidadeSpinner.getSelectedItem().toString());
+	    	  	operacao = (getResources().getString(R.string.soma) + ": " + acrescenta.getText().toString()) + " x " + Integer.parseInt(quantidadeSpinner.getSelectedItem().toString());
 		        tempSuaParte = newSuaParte + (Float.parseFloat(acrescenta.getText().toString()) * Integer.parseInt(quantidadeSpinner.getSelectedItem().toString()));
 		        tempSubTotal = Float.parseFloat(total.getText().toString()) - tempSuaParte; 
     	  	}else{
-	    	  	operacao = ("Soma: " + acrescenta.getText().toString() + " x " + Integer.parseInt(quantidadeSpinner.getSelectedItem().toString()) + " / " + dividirSpinner.getSelectedItem().toString());
+	    	  	operacao = (getResources().getString(R.string.soma) + ": " + acrescenta.getText().toString() + " x " + Integer.parseInt(quantidadeSpinner.getSelectedItem().toString()) + " / " + dividirSpinner.getSelectedItem().toString());
 		        tempSuaParte = newSuaParte + ((Float.parseFloat(acrescenta.getText().toString()) * Integer.parseInt(quantidadeSpinner.getSelectedItem().toString())) / Integer.parseInt(dividirSpinner.getSelectedItem().toString()));
 		        tempSubTotal = Float.parseFloat(total.getText().toString()) - tempSuaParte; 
     	  	}
@@ -185,15 +176,24 @@ public class PassaRegua extends Activity {
 	        dividirSpinner.setSelection(0);
 	        
 	        if(tempSuaParte > Float.parseFloat(total.getText().toString())) {
-	            Toast.makeText(this, "Sua parte ultrapassa o total da conta", Toast.LENGTH_LONG).show();
+	            Toast.makeText(this, (getResources().getString(R.string.message_part_over_total)), Toast.LENGTH_LONG).show();
 	            return;
 	          }
+            
+            restaText.setVisibility(0);
+            restaEdit.setVisibility(0);
+      	  	suaparteText.setVisibility(0);
+    	  	tenpercentText.setVisibility(0);
+    	  	suaparteEdit.setVisibility(0);
+    	  	tenpercentButton.setVisibility(0);
+    	  	historico.setVisibility(0);
+    	  	xTotalText.setVisibility(1);	        
 	        
 	        newTotal = Float.parseFloat(total.getText().toString());
 	        
 	        if(tenPercentButton.isChecked()){
 	        	tenPercentButton.setChecked(false);
-	        	Toast.makeText(this, "10% Desligado", Toast.LENGTH_LONG).show();
+	        	Toast.makeText(this, (getResources().getString(R.string.ten_percent_off)), Toast.LENGTH_LONG).show();
 	        }
 	        
 	        itens.add(operacao + " = " + tempSuaParte);
@@ -214,7 +214,7 @@ public class PassaRegua extends Activity {
             ToggleButton tenPercentButton = (ToggleButton) findViewById(R.id.tenpercetTB);
             
             if((newSuaParte * 1.1) > newTotal){
-	            Toast.makeText(this, "10% não pode ser calculado. Sua parte ultrapassará o total.", Toast.LENGTH_LONG).show();  
+	            Toast.makeText(this, (getResources().getString(R.string.message_part_over_total)), Toast.LENGTH_LONG).show();  
 	            if(tenPercentButton.isChecked()){
 		        	tenPercentButton.setChecked(false);
 		        }
@@ -245,7 +245,7 @@ public class PassaRegua extends Activity {
 			operacoes += "[" + i + "] " + item + "\n";
 			i++;
 		}
-    	operacoes += "\nSua Parte: " + newSuaParte;
+    	operacoes += "\n" + (getResources().getString(R.string.suaparte)) + ": " + newSuaParte;
     	
     	nextScreen.putExtra("operacoes", operacoes);
     	startActivity(nextScreen);
@@ -262,21 +262,21 @@ public class PassaRegua extends Activity {
             ToggleButton tenPercentButton = (ToggleButton) findViewById(R.id.tenpercetTB);
 
 	        if (acrescenta.getText().length() == 0 || Float.parseFloat(acrescenta.getText().toString()) <= 0) {
-	            Toast.makeText(this, "Favor Inserir o valor do item a subtrair", Toast.LENGTH_LONG).show();
+	            Toast.makeText(this, (getResources().getString(R.string.message_subtract_null)), Toast.LENGTH_LONG).show();
 	            return;
 	        }
             
 	    	if (newTotal <= 0){
-	            Toast.makeText(this, "Total igual ou inferior a zero", Toast.LENGTH_LONG).show();
+	            Toast.makeText(this, (getResources().getString(R.string.message_total_zero_or_less)), Toast.LENGTH_LONG).show();
 	            return;    		
 	    	}	        
 	
     	  	if(dividirSpinner.getSelectedItem().toString().equalsIgnoreCase("1")){
-	    	  	operacao = ("Soma: " + acrescenta.getText().toString()) + " x " + Integer.parseInt(quantidadeSpinner.getSelectedItem().toString());
+	    	  	operacao = ((getResources().getString(R.string.soma)) + ": " + acrescenta.getText().toString()) + " x " + Integer.parseInt(quantidadeSpinner.getSelectedItem().toString());
 		        tempSuaParte = newSuaParte + (Float.parseFloat(acrescenta.getText().toString()) * Integer.parseInt(quantidadeSpinner.getSelectedItem().toString()));
 		        tempSubTotal = Float.parseFloat(total.getText().toString()) - tempSuaParte; 
     	  	}else{
-	    	  	operacao = ("Soma: " + acrescenta.getText().toString() + " x " + Integer.parseInt(quantidadeSpinner.getSelectedItem().toString()) + " / " + dividirSpinner.getSelectedItem().toString());
+	    	  	operacao = ((getResources().getString(R.string.soma)) + ": " + acrescenta.getText().toString() + " x " + Integer.parseInt(quantidadeSpinner.getSelectedItem().toString()) + " / " + dividirSpinner.getSelectedItem().toString());
 		        tempSuaParte = newSuaParte + ((Float.parseFloat(acrescenta.getText().toString()) * Integer.parseInt(quantidadeSpinner.getSelectedItem().toString())) / Integer.parseInt(dividirSpinner.getSelectedItem().toString()));
 		        tempSubTotal = Float.parseFloat(total.getText().toString()) - tempSuaParte; 
     	  	}
@@ -284,7 +284,7 @@ public class PassaRegua extends Activity {
 	        dividirSpinner.setSelection(0);        
 	        
 	        if(tempSuaParte < 0) {
-	            Toast.makeText(this, "Sua parte não pode ser inferior a zero", Toast.LENGTH_LONG).show();
+	            Toast.makeText(this, (getResources().getString(R.string.message_your_part_zero_or_less)), Toast.LENGTH_LONG).show();
 	            return;
 	          }
 	        
@@ -292,7 +292,7 @@ public class PassaRegua extends Activity {
 	        
 	        if(tenPercentButton.isChecked()){
 	        	tenPercentButton.setChecked(false);
-	        	Toast.makeText(this, "10% Desligado", Toast.LENGTH_LONG).show();
+	        	Toast.makeText(this, (getResources().getString(R.string.ten_percent_off)), Toast.LENGTH_LONG).show();
 	        }	        
 
 	        itens.add(operacao + " = " + tempSuaParte);
